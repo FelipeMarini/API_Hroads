@@ -108,7 +108,7 @@ namespace senai.hroads.webAPI.Controllers
             };
 
             
-            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("filmes-chave-autenticacao"));
+            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("hroads-chave-autenticacao"));
 
             
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

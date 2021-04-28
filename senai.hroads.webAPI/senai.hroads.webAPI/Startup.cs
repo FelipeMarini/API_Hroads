@@ -66,7 +66,7 @@ namespace senai.hroads.webAPI
                         ValidateLifetime = true,
 
 
-                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("hroads-chave")),
+                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("hroads-chave-autenticacao")),
 
 
                         ClockSkew = TimeSpan.FromMinutes(30),
