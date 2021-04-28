@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace senai.hroads.webAPI.Interfaces
 {
-    interface IPersonagemRepository
+    interface ITiposUsuarioRepository
     {
     }
 }

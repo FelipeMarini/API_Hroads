@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace senai.hroads.webAPI.Interfaces
+namespace senai.hroads.webAPI.Repositories
 {
-    interface IPersonagemRepository
+    public class TiposUsuarioRepository
     {
     }
 }
