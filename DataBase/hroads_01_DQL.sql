@@ -1,57 +1,41 @@
---DQL
-USE SENAI_HROADS_TARDE;
+USE Hroads;
+
 
 SELECT * FROM Personagens;
 
 SELECT * FROM Classes;
 
-SELECT Nome
-FROM Classes;
+SELECT * FROM Habilidades;
 
-SELECT * FROM Habilidades; 
+SELECT * FROM TiposHabilidade;
 
-SELECT COUNT (DISTINCT idHabilidades) 'Quantidade/Habilidades'
-FROM Habilidades
-GO
+SELECT * FROM TiposUsuario;
 
-SELECT Habilidades.idHabilidades 
-FROM Habilidades;
+SELECT * FROM Usuarios;
+
+-- contar número de habilidades registradas
+SELECT COUNT (DISTINCT idHabilidade) 'Quantidade/Habilidades' FROM Habilidades;
 
 
-SELECT * FROM TipoHabilidades;
-
-SELECT H.Nome AS Habilidade, TipoHabilidades.Nome AS TipoHabilidade
+-- selecionar cada habilidade com seu respectivo tipo de habilidade
+SELECT H.nome AS Habilidade, TiposHabilidade.tipoHabilidade AS Tipo_Habilidade
 FROM Habilidades AS H
-INNER JOIN TipoHabilidades
-ON H.idTH = TipoHabilidades.idTipoHabilidades;
+INNER JOIN TiposHabilidade
+ON H.idTiposHabilidade = TiposHabilidade.idTiposHabilidade;
 
 
-SELECT Personagens.Nome, Classes.Nome FROM Personagens
+-- selecionar os personagens e suas classes correspondentes
+SELECT Personagens.nome, Classes.nome FROM Personagens
 INNER JOIN Classes
-ON Personagens.idClasses = Classes.idClasses;
+ON Personagens.idClasse = Classes.idClasse;
 
-SELECT Personagens.Nome, Classes.Nome FROM Personagens
+
+-- selecionar os personagens e suas classes correspondentes, mesmo que uma classe não tenha um personagem cadastrado
+SELECT Personagens.nome, Classes.nome FROM Personagens
 RIGHT JOIN Classes
-ON Personagens.idClasses = Classes.idClasses;
-
-SELECT H.Nome AS Habilidade, C.Nome AS Classe
-FROM ClassesHabilidades AS CH
-INNER JOIN Classes AS C
-ON C.idClasses = CH.idClasses
-INNER JOIN Habilidades AS H
-ON H.idHabilidades = CH.idHabilidades;
-
-SELECT Classes.Nome, H.Nome 
-FROM ClassesHabilidades AS CH
-INNER JOIN Classes
-ON Classes.idClasses = CH.idClasses
-INNER JOIN Habilidades AS H
-ON H.idHabilidades = CH.idHabilidades;
+ON Personagens.idClasse = Classes.idClasse;
 
 
-SELECT H.Nome AS Habilidade, C.Nome AS Classe
-FROM ClassesHabilidades AS CH
-RIGHT JOIN Habilidades AS H
-ON  H.idHabilidades = CH.idHabilidades
-RIGHT JOIN Classes AS C
-ON C.idClasses = CH.idClasses;
+
+
+

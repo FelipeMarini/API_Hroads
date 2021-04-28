@@ -1,42 +1,60 @@
---DDL
-CREATE DATABASE SENAI_HROADS_TARDE;
+CREATE DATABASE Hroads;
+GO
 
-USE SENAI_HROADS_TARDE;
+USE Hroads;
+GO
+
 
 CREATE TABLE Classes
 (
-	idClasses INT PRIMARY KEY IDENTITY
-	,Nome VARCHAR(200) NOT NULL
+	idClasse INT PRIMARY KEY IDENTITY
+	,nome VARCHAR(200) NOT NULL
 );
+GO
+
 
 CREATE TABLE Personagens
 (
-	idPersonagens INT PRIMARY KEY IDENTITY
-	,Nome VARCHAR(200)
-	,idClasses INT FOREIGN KEY REFERENCES Classes(idClasses)
-	,CapacidadeMaxVida INT
-	,CapacidadeMaxMana INT
-	,DataAtualizacao DATE
-	,DataCriacao DATE
+	idPersonagem INT PRIMARY KEY IDENTITY
+	,nome VARCHAR(200)
+	,idClasse INT FOREIGN KEY REFERENCES Classes(idClasse)
+	,capacidadeMaxVida INT
+	,capacidadeMaxMana INT
+	,dataAtualizacao DATE
+	,dataCriacao DATE
 );
+GO
 
 
-CREATE TABLE TipoHabilidades
+CREATE TABLE TiposHabilidade
 (
-	idTipoHabilidades INT PRIMARY KEY IDENTITY
-	,Nome VARCHAR(200) NOT NULL
+	idTiposHabilidade INT PRIMARY KEY IDENTITY
+	,tipoHabilidade VARCHAR(200) NOT NULL
 );
+GO
+
 
 CREATE TABLE Habilidades
 (
-	idHabilidades INT PRIMARY KEY IDENTITY
-	,idTH INT FOREIGN KEY REFERENCES TipoHabilidades(idTipoHabilidades)
-	,Nome VARCHAR(200) NOT NULL
+	idHabilidade INT PRIMARY KEY IDENTITY
+	,idTiposHabilidade INT FOREIGN KEY REFERENCES TiposHabilidade(idTiposHabilidade)
+	,nome VARCHAR(200) NOT NULL
 );
+GO
 
-CREATE TABLE ClassesHabilidades
+CREATE TABLE TiposUsuario
 (
-	idClasses INT FOREIGN KEY REFERENCES Classes(idClasses)
-	,idHabilidades INT FOREIGN KEY REFERENCES Habilidades(idHabilidades)
+	idTiposUsuario INT PRIMARY KEY IDENTITY
+	,titulo VARCHAR(200) NOT NULL
+);
+GO
+
+
+CREATE TABLE Usuarios
+(
+	idUsuario INT PRIMARY KEY IDENTITY
+	,email VARCHAR(100) UNIQUE NOT NULL
+	,senha VARCHAR(50) NOT NULL
+	,idTiposUsuario INT FOREIGN KEY REFERENCES TiposUsuario(idTiposUsuario)
 );
 
